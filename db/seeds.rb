@@ -1,3 +1,4 @@
+require "pry"
 User.delete_all
 Restaurant.delete_all
 Review.delete_all
@@ -20,16 +21,16 @@ rest6 = Restaurant.create(name: Faker::Company.name, style: Faker::Restaurant.ty
 rest7 = Restaurant.create(name: Faker::Company.name, style: Faker::Restaurant.type)
 rest8 = Restaurant.create(name: Faker::Company.name, style: Faker::Restaurant.type)
 
-rev1 = Review.create(title: "great beer", star_rating: 4, restaurant_id: 1, user_id: 1)
-rev2 = Review.create(title: "bad burgers", star_rating: 3, restaurant_id: 2, user_id: 2)
-rev3 = Review.create(title: "thanks for smoking", star_rating: 2, restaurant_id: 3, user_id: 3)
-rev4 = Review.create(title: "bad waiter", star_rating: 1, restaurant_id: 4, user_id: 4)
+rev1 = Review.create(title: "great beer", star_rating: 4, restaurant_id: rest1.id, user_id: user1.id)
+rev2 = Review.create(title: "bad burgers", star_rating: 3, restaurant_id: rest2.id, user_id: user2.id)
+rev3 = Review.create(title: "thanks for smoking", star_rating: 2, restaurant_id: rest3.id, user_id: user3.id)
+rev4 = Review.create(title: "bad waiter", star_rating: 1, restaurant_id: rest4.id, user_id: user4.id)
 rev5 = Review.create(title: Faker::Hacker.say_something_smart, star_rating: Faker::Number.between(from: 1, to: 5) ,restaurant_id: Restaurant.all.sample.id, user_id: User.all.sample.id)
 rev6 = Review.create(title: Faker::Hacker.say_something_smart, star_rating: Faker::Number.between(from: 1, to: 5) ,restaurant_id: Restaurant.all.sample.id, user_id: User.all.sample.id)
 rev7 = Review.create(title: Faker::Hacker.say_something_smart, star_rating: Faker::Number.between(from: 1, to: 5) ,restaurant_id: Restaurant.all.sample.id, user_id: User.all.sample.id)
 rev8 = Review.create(title: Faker::Hacker.say_something_smart, star_rating: Faker::Number.between(from: 1, to: 5) ,restaurant_id: Restaurant.all.sample.id, user_id: User.all.sample.id)
 
-
+binding.pry
 
 
 #https://github.com/faker-ruby/faker#generators << Faker generators
