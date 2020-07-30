@@ -1,4 +1,5 @@
 require "pry"
+require "colorize"
 class Cli
         
     attr_accessor :user
@@ -16,14 +17,25 @@ class Cli
     
     def greet
         puts "\n"
-        puts "Welcome to Hot Waffles, the best place to find the hottest restaurants in your area!"
+       puts "  /$$   /$$             /$$           /$$      /$$            /$$$$$$   /$$$$$$  /$$                           /$$ "     
+       puts " | $$  | $$            | $$          | $$  /$ | $$           /$$__  $$ /$$__  $$| $$                          | $$ "     
+       puts " | $$  | $$  /$$$$$$  /$$$$$$        | $$ /$$$| $$  /$$$$$$ | $$  \__/| $$  \__/  | $$  /$$$$$$   /$$$$$$$      | $$ "     
+       puts " | $$$$$$$$ /$$__  $$|_  $$_/        | $$/$$ $$ $$ |____  $$| $$$$    | $$$$    | $$ /$$__  $$ /$$_____/      | $$ "     
+       puts " | $$__  $$| $$  \\ $$  | $$          | $$$$_  $$$$  /$$$$$$$| $$_/    | $$_/    | $$| $$$$$$$$|  $$$$$$       |__/ "     
+       puts " | $$  | $$| $$  | $$  | $$ /$$      | $$$/ \\ $$$ /$$__  $$ | $$      | $$      | $$| $$_____/ \____  $$           "     
+       puts " | $$  | $$|  $$$$$$/  |  $$$$/      | $$/   \\ $$|  $$$$$$$ | $$      | $$      | $$|  $$$$$$$ /$$$$$$$/       /$$ "     
+       puts " |__/  |__/ \\______/    \\___/         |__/     \__/ \\_______/ |__/      |__/     |__/ \_______/|_______/        |__/ " 
+        
+        puts "\n"
+        puts "\n"        
+        puts "Welcome to Hot Waffles, a personal restaurant review log for you and yours!".red
         puts "\n"
     end
 
     def self.display_main_menu(user)
         puts"\n"
         puts"Hello #{user.name}"
-        puts "Please select an option by number:"
+        puts "Please select an option by number:".red
         puts "Would you like to read a review ? (press 1)"
         puts "Would you like to create a review ? (press 2)"
         puts "Would you like to update a review ? (press 3)"
@@ -36,8 +48,9 @@ class Cli
 
             case number 
             
-            when "1"
+            when "1"  
                 Restaurant.display_restaurants
+                puts"\n"
                 puts"\n"
                 puts"type the name of a restaurant, so you can read a review!"
                 restaurant_name = gets.chomp
@@ -45,6 +58,7 @@ class Cli
                 Cli.options_input(user)
 
             when "2"
+                puts"\n"
                 puts"\n"
                 puts "What do you wanna call it?"
                   title_input = gets.chomp
@@ -54,55 +68,34 @@ class Cli
 
                   puts "Where did you eat at?"
                     restaurant_input = gets.chomp
-                    rest3 = Restaurant.create(restaurant_input, "funky")
-               var = User.create_review(title_input,star_rating_input,rest3)
-               var
-                Cli.options_input
+                    resta = Restaurant.create(name: restaurant_input, style: "funky")
+                    user.create_review(title_input,star_rating_input,resta)
+                  puts "\n"
+                  puts "your review: '#{title_input}'has been published!!! "
+                Cli.options_input(user)
             
             when "3"
-                #update method
-            
+                puts "\n"
+                puts "\n"
+                user.update_review
+                
+                Cli.options_input(user)
             when "4"
-                #delete method
+                puts "\n"
+                puts "Which review would you like to delete ?"
+            
+                user.remove_review
+                Cli.options_input(user)
+               
+            else 
+                puts "Sorry only press numbers from 1-4 :("
+                Cli.options_input(user)
+            
             end
     end
 
-
-    #     puts "Please enter a star rating, for a list of restaurants ? (star rating of 1-5)"
-        
-    #     write_input = gets.chomp
-    #     star_rating = gets.chomp
-    #     var = user.find_star_rating(star_rating)
-    #     var
-    # end
-    # update_input = gets.chomp
-    # delete_input = gets.chomp
-    
-    
-    # puts "Please enter a star rating for a restaurant:"
-    # star_rating = gets.chomp 
-    #  
-    
-    # Ask user if they wanna see highest rated restaurants
-    # in terminal bring up highest rated 
-    # Would you like to see the 
-        # end
-
-
-
-
-
-
-    def change_review(user)
-        user.update_review
-    end
+    #navigate to a page and see the review and star rating of t any restaurant 
+    #analitics top 3 ranked, by star rating, style, 
 
 end
 
-## Use instance methods / instance variables 
-# In run file create new instance cli = Cli.new   cli.run
-# As a user, i can create an account/ recognize existing user (create)   PASSED
-# As a user, i can create a review(create) 
-# As a user, i can read a reviews from other users (read)
-# As a user, i can update my review(update) what user ? current user logged in ! instance var
-# As a user, i can delete one of my reviews (delete)

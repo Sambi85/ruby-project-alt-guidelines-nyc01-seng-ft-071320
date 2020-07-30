@@ -1,6 +1,7 @@
 class Restaurant < ActiveRecord::Base
     has_many :reviews
     has_many :users, through: :reviews
+    has_many :chefs
 
     def self.all_names
         self.all.collect do |restaurant| 
