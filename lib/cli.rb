@@ -8,10 +8,9 @@ class Cli
     end 
     
     def run
-
         greet
         user = User.login
-        display_main_menu 
+        Cli.options_input(user)
     end
     
     
@@ -21,31 +20,73 @@ class Cli
         puts "\n"
     end
 
-    def display_main_menu
+    def self.display_main_menu(user)
         puts"\n"
+        puts"Hello #{user.name}"
         puts "Please select an option by number:"
-        puts "1. Please enter a star rating, for a list of restaurants ? (star rating of 1-5)"
-        star_rating = gets.chomp
-        User.find_star_rating(star_rating)
+        puts "Would you like to read a review ? (press 1)"
+        puts "Would you like to create a review ? (press 2)"
+        puts "Would you like to update a review ? (press 3)"
+        puts "Would you like to delete a review? (press 4)"
+    end
 
+    def self.options_input(user)
+        Cli.display_main_menu(user)
+        number = gets.chomp
 
-        # Ask user if they wanna see highest rated restaurants
-        # in terminal bring up highest rated 
-        # Would you like to see the 
-        #puts "Would you like to write a review ?"
-        # if 1 proceed to writing a review, if 2 
-            # write_input = gets.chomp
-            # puts "Would you like to update a review ?  (press 3)"
-            # update_input = gets.chomp
-            # puts "Would you like to delete a review?  (press 4)"
-            # delete_input = gets.chomp
-
-          
-                # puts "Please enter a star rating for a restaurant:"
-                # star_rating = gets.chomp 
-                #  
+            case number 
             
-        end
+            when "1"
+                Restaurant.display_restaurants
+                puts"\n"
+                puts"type the name of a restaurant, so you can read a review!"
+                restaurant_name = gets.chomp
+                User.find_review(restaurant_name)
+                Cli.options_input(user)
+
+            when "2"
+                puts"\n"
+                puts "What do you wanna call it?"
+                  title_input = gets.chomp
+
+                  puts "Who many stars? 1-5"
+                  star_rating_input = gets.chomp
+
+                  puts "Where did you eat at?"
+                    restaurant_input = gets.chomp
+                    rest3 = Restaurant.create(restaurant_input, "funky")
+               var = User.create_review(title_input,star_rating_input,rest3)
+               var
+                Cli.options_input
+            
+            when "3"
+                #update method
+            
+            when "4"
+                #delete method
+            end
+    end
+
+
+    #     puts "Please enter a star rating, for a list of restaurants ? (star rating of 1-5)"
+        
+    #     write_input = gets.chomp
+    #     star_rating = gets.chomp
+    #     var = user.find_star_rating(star_rating)
+    #     var
+    # end
+    # update_input = gets.chomp
+    # delete_input = gets.chomp
+    
+    
+    # puts "Please enter a star rating for a restaurant:"
+    # star_rating = gets.chomp 
+    #  
+    
+    # Ask user if they wanna see highest rated restaurants
+    # in terminal bring up highest rated 
+    # Would you like to see the 
+        # end
 
 
 

@@ -23,12 +23,8 @@ class User < ActiveRecord::Base
      def find_star_rating(star_rating)   ### Passes
           Review.find_by(star_rating: star_rating)
      end
-
-    # def self.create_account(name) ### Passed
-    #   user = self.create(name: name)
-    # end
     
-    def update_review
+     def update_review
     
           self.reviews.each do |review|
             puts "#{review.title} - #{review.restaurant.name}"
@@ -54,13 +50,15 @@ class User < ActiveRecord::Base
 
     
 
-    # def create_review(title,star_rating,restaurant) ### Passed
-    #   review = Review.create(title: title, star_rating: star_rating, restaurant_id: restaurant.id, user_id: self.id)
-    # end
+      def self.create_review(title,star_rating,restaurant) ### Passed
+        review = Review.create(title: title, star_rating: star_rating, restaurant_id: restaurant.id, user_id: self.id)
+      end
 
-    # def find_review(name) 
-    #   Restaurant.find_by(name: name)
-    # end
+    def self.find_review(name)
+     res = Restaurant.find_by(name: name)
+     rev = Review.find_by(restaurant_id: res.id)
+      puts "Review Title: #{rev.title} - Star Rating: #{rev.star_rating}"
+    end
  
     # def remove_review(title) ### Passed
     #    rev = Review.find_by(title: title)

@@ -16,4 +16,10 @@ class Restaurant < ActiveRecord::Base
            puts style.name
         end
     end
+
+    def self.display_restaurants
+        self.all.each do |restaurant|
+            puts "#{restaurant.name}"
+        end
+    end
 end
