@@ -33,7 +33,20 @@ Tables:
 4. Open in your choice of code editor (We used Vs code: 'code .')
 5. make sure your in Mod1_project_restaurants_reviews folder
 6. bundle install for all of your gems
-7. run app: ruby bin/run.rb
+7. run app: "ruby bin/run.rb" in "Mod1_project_restaurants_reviews"
+
+Commands:
+1. Create a username or just login with an old account
+2. Use a number to interact with the main display
+3. to quit press: 'ctrl' + 'c'
+
+Press the following numbers in display: 
+1. ... to read a review by restaurant name 
+2. ... to create a review
+3. ... to update/edit a review by name
+4. ... to delete a review by name
+ 
+
 
 Gems we used:
 gem "activerecord", '~> 5.2'
