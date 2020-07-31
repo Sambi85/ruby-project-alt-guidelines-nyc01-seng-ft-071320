@@ -20,10 +20,12 @@ class User < ActiveRecord::Base
                    end                  
     end
 #----------------------------------------------------------------------------------------------------#
+    
     def find_star_rating(star_rating)   ### Passes
          Review.find_by(star_rating: star_rating)
     end
 #----------------------------------------------------------------------------------------------------#    
+   
     def create_review(title, star_rating, restaurant) 
         review = Review.create(title: title, star_rating: star_rating, restaurant_id: restaurant.id, user_id: self.id)
     end
@@ -80,6 +82,11 @@ end
             when "n" || "N"
                 puts "Not a problem, will return you to the main menu!".red
             end
+    end
+#--------------------------------------------------------------------#
+    def top_three #returns top 3 restaurants by star rating
+        
+
     end
 
 
