@@ -98,8 +98,5 @@ class Cli
             end
     end
 
-    #navigate to a page and see the review and star rating of t any restaurant 
-    #analitics top 3 ranked, by star rating, style, 
-
 end
 

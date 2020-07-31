@@ -2,7 +2,7 @@ Module One Final Project
 ========================
 
 name: Hot Waffles !
-concept: a personal dining companion log for your friends, family & associates
+concept: a personal dining companion log for your friends, family & associates. This is a basic MVP, hope to add more functionality if it's an acceptable build. 
 
 Models we used for this project:
 1.  User has many reviews
@@ -33,7 +33,7 @@ Tables:
 4. Open in your choice of code editor (We used Vs code: 'code .')
 5. make sure your in Mod1_project_restaurants_reviews folder
 6. bundle install for all of your gems
-7. run app: "ruby bin/run.rb" in "Mod1_project_restaurants_reviews"
+7. run app: "ruby bin/run.rb" in "hot_waffles"
 
 Commands:
 1. Create a username or just login with an old account
