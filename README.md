@@ -26,7 +26,7 @@ Tables:
 3. User has :name/string
 
 
-#instructions(Mac os)
+#instructions(Mac os):
 1. git fork 
 2. git clone with SSH key
 3. git clone to your favorite directory
@@ -38,13 +38,14 @@ Tables:
 Commands:
 1. Create a username or just login with an old account
 2. Use a number to interact with the main display
-3. to quit press: 'ctrl' + 'c'
+3. to hard quit press: 'ctrl' + 'c'
 
 Press the following numbers in display: 
 1. ... to read a review by restaurant name 
 2. ... to create a review
 3. ... to update/edit a review by name
 4. ... to delete a review by name
+5. ... to exit type 'exit'
  
 
 

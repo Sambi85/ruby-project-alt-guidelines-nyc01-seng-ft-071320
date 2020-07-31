@@ -28,7 +28,7 @@ class Cli
         
         puts "\n"
         puts "\n"        
-        puts "Welcome to Hot Waffles, a personal restaurant review log for you and yours!".red
+        puts "Welcome to Hot Waffles, a personal restaurant review log for you and yours!".yellow
         puts "\n"
     end
 
@@ -36,10 +36,12 @@ class Cli
         puts"\n"
         puts"Hello #{user.name}"
         puts "Please select an option by number:".red
-        puts "Would you like to read a review ? (press 1)"
-        puts "Would you like to create a review ? (press 2)"
-        puts "Would you like to update a review ? (press 3)"
-        puts "Would you like to delete a review? (press 4)"
+        puts "Would you like to read a review ?    (press 1)".yellow
+        puts "Would you like to create a review ?  (press 2)".yellow
+        puts "Would you like to update a review ?  (press 3)".yellow
+        puts "Would you like to delete a review?   (press 4)".yellow
+        puts "\n"
+        puts "Type 'exit' if you wanna quit!".yellow
     end
 
     def self.options_input(user)
@@ -52,7 +54,7 @@ class Cli
                 Restaurant.display_restaurants
                 puts"\n"
                 puts"\n"
-                puts"type the name of a restaurant, so you can read a review!"
+                puts"type the name of a restaurant, so you can read a review!".red
                 restaurant_name = gets.chomp
                 User.find_review(restaurant_name)
                 Cli.options_input(user)
@@ -60,18 +62,18 @@ class Cli
             when "2"
                 puts"\n"
                 puts"\n"
-                puts "What do you wanna call it?"
+                puts "What do you wanna call it?".red
                   title_input = gets.chomp
 
-                  puts "Who many stars? 1-5"
+                  puts "Who many stars? 1-5".red
                   star_rating_input = gets.chomp
 
-                  puts "Where did you eat at?"
+                  puts "Where did you eat at?".red
                     restaurant_input = gets.chomp
                     resta = Restaurant.create(name: restaurant_input, style: "funky")
                     user.create_review(title_input,star_rating_input,resta)
                   puts "\n"
-                  puts "your review: '#{title_input}'has been published!!! "
+                  puts "your review: '#{title_input}'.white has been published!!! ".red
                 Cli.options_input(user)
             
             when "3"
@@ -82,13 +84,15 @@ class Cli
                 Cli.options_input(user)
             when "4"
                 puts "\n"
-                puts "Which review would you like to delete ?"
+                puts "Which review would you like to delete ?".red
             
                 user.remove_review
                 Cli.options_input(user)
-               
+            when "exit"
+               puts "\n"
+               puts "Parting is such sweet sorrows, see you later"
             else 
-                puts "Sorry only press numbers from 1-4 :("
+                puts "Sorry only press numbers from 1-4 :(".red
                 Cli.options_input(user)
             
             end
